@@ -4,6 +4,7 @@ import QuotationForm from "@/components/QuotationForm";
 import QuotationDocument from "@/components/QuotationDocument";
 
 const Index = () => {
+  const [activeTab, setActiveTab] = useState("form");
   const [quotationData, setQuotationData] = useState({
     // Company Details
     companyName: "",
@@ -38,6 +39,10 @@ const Index = () => {
     terms: ""
   });
 
+  const handleFormSubmit = () => {
+    setActiveTab("preview");
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-4">
       <div className="max-w-7xl mx-auto">
@@ -50,7 +55,7 @@ const Index = () => {
           </p>
         </header>
 
-        <Tabs defaultValue="form" className="w-full">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full grid-cols-2 mb-6">
             <TabsTrigger value="form" className="text-lg py-3">
               📝 Quote Form
@@ -64,6 +69,7 @@ const Index = () => {
             <QuotationForm 
               quotationData={quotationData}
               setQuotationData={setQuotationData}
+              onSubmit={handleFormSubmit}
             />
           </TabsContent>
 

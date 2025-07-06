@@ -4,10 +4,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Plus, X } from "lucide-react";
+import { Plus, X, Check } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { useToast } from "@/hooks/use-toast";
 
-const QuotationForm = ({ quotationData, setQuotationData }) => {
+const QuotationForm = ({ quotationData, setQuotationData, onSubmit }) => {
+  const { toast } = useToast();
   const updateField = (field, value) => {
     setQuotationData(prev => ({
       ...prev,
@@ -79,6 +81,47 @@ const QuotationForm = ({ quotationData, setQuotationData }) => {
       taxAmount,
       total
     }));
+  };
+
+  const handleSubmit = () => {
+    // Validate required fields
+    const requiredFields = [
+      { field: 'companyName', label: 'Company Name' },
+      { field: 'clientName', label: 'Client Name' },
+      { field: 'quoteNumber', label: 'Quote Number' }
+    ];
+
+    const missingFields = requiredFields.filter(({ field }) => !quotationData[field]);
+    
+    if (missingFields.length > 0) {
+      toast({
+        title: "Missing Required Fields",
+        description: `Please fill in: ${missingFields.map(f => f.label).join(', ')}`,
+        variant: "destructive"
+      });
+      return;
+    }
+
+    // Check if at least one item has description
+    const hasValidItems = quotationData.items.some(item => item.description.trim());
+    if (!hasValidItems) {
+      toast({
+        title: "Missing Items",
+        description: "Please add at least one item with a description",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    toast({
+      title: "Quotation Generated!",
+      description: "Your quotation has been created successfully. Check the preview tab.",
+    });
+
+    // Call the onSubmit callback to switch to preview tab
+    if (onSubmit) {
+      onSubmit();
+    }
   };
 
   return (
@@ -351,6 +394,18 @@ const QuotationForm = ({ quotationData, setQuotationData }) => {
           </div>
         </CardContent>
       </Card>
+
+      {/* Submit Button */}
+      <div className="flex justify-center pt-6">
+        <Button 
+          onClick={handleSubmit}
+          size="lg"
+          className="px-12 py-3 text-lg font-semibold"
+        >
+          <Check className="mr-2 h-5 w-5" />
+          Generate Quotation
+        </Button>
+      </div>
     </div>
   );
 };
