@@ -1,0 +1,158 @@
+:root {
+  --primary: 222 89% 53%;         /* Blue */
+  --primary-foreground: 0 0% 100%; /* White */
+  --secondary: 220 13% 91%;        /* Light gray */
+  --secondary-foreground: 222 47% 11%; /* Dark text */
+  --destructive: 0 84% 60%;        /* Red */
+  --destructive-foreground: 0 0% 100%; /* White */
+  --muted: 220 13% 91%;            /* Muted gray */
+  --muted-foreground: 222 47% 11%; /* Dark text */
+  --accent: 265 89% 68%;           /* Purple accent */
+  --accent-foreground: 0 0% 100%;  /* White */
+  --popover: 0 0% 100%;            /* White */
+  --popover-foreground: 222 47% 11%; /* Dark text */
+  --card: 0 0% 100%;               /* White */
+  --card-foreground: 222 47% 11%;  /* Dark text */
+  --background: 0 0% 100%;         /* White */
+  --foreground: 222 47% 11%;       /* Dark text */
+  --input: 220 13% 91%;            /* Light gray */
+  --ring: 222 89% 53%;             /* Blue */
+  /* Sidebar example colors */
+  --sidebar-background: 220 13% 91%;
+  --sidebar-foreground: 222 47% 11%;
+  --sidebar-primary: 222 89% 53%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 265 89% 68%;
+  --sidebar-accent-foreground: 0 0% 100%;
+  --sidebar-border: 220 13% 91%;
+  --sidebar-ring: 222 89% 53%;
+  --radius: 0.5rem;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+/* Classic print style for quotations */
+.classic-print {
+  font-family: 'Times New Roman', Times, serif !important;
+  background: #fff !important;
+  color: #000 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.classic-print * {
+  font-family: inherit !important;
+  color: #000 !important;
+  background: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.classic-print .border, .classic-print .border-b-2, .classic-print table, .classic-print th, .classic-print td {
+  border-color: #000 !important;
+  border-width: 1.5px !important;
+  border-style: solid !important;
+}
+.classic-print th, .classic-print td {
+  padding: 4px 8px !important;
+  text-align: center;
+}
+.classic-print th {
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #fff !important;
+}
+.classic-print .company-logo {
+  width: 60px !important;
+  height: 60px !important;
+  object-fit: contain;
+  float: left;
+  margin-right: 16px;
+  margin-bottom: 0;
+}
+.classic-print .company-header {
+  text-align: center;
+  margin-left: 0;
+  margin-right: 0;
+}
+.classic-print .company-header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+.classic-print .company-header div {
+  margin-bottom: 0.15rem;
+}
+.classic-print .header-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #000;
+  font-weight: bold;
+  padding: 0.25rem 0.5rem;
+  background: #fff;
+}
+@media print {
+  .classic-print {
+    font-family: 'Times New Roman', Times, serif !important;
+    background: #fff !important;
+    color: #000 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  .classic-print * {
+    font-family: inherit !important;
+    color: #000 !important;
+    background: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  .classic-print .border, .classic-print .border-b-2, .classic-print table, .classic-print th, .classic-print td {
+    border-color: #000 !important;
+    border-width: 1.5px !important;
+    border-style: solid !important;
+  }
+  .classic-print th, .classic-print td {
+    padding: 4px 8px !important;
+    text-align: center;
+  }
+  .classic-print th {
+    font-weight: bold;
+    text-transform: uppercase;
+    background: #fff !important;
+  }
+  .classic-print .company-logo {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: contain;
+    float: left;
+    margin-right: 16px;
+    margin-bottom: 0;
+  }
+  .classic-print .company-header {
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .classic-print .company-header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+  .classic-print .company-header div {
+    margin-bottom: 0.15rem;
+  }
+  .classic-print .header-row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #000;
+    font-weight: bold;
+    padding: 0.25rem 0.5rem;
+    background: #fff;
+  }
+}
